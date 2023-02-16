@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-struct TMMemoItem
-{
-    
-}
-
 struct TMMemoCollectionView: UIViewRepresentable
 {
     class TMMemoCollectionViewCoordinator: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
@@ -74,15 +69,120 @@ struct TMMemoCollectionView: UIViewRepresentable
     }
 }
 
-struct ContentView: View
+struct TMMemoItem: Identifiable
 {
+    let id: String = UUID().uuidString
+    var title: String
+    var context: String?
+    
+    init(title: String = "untitled", context: String? = nil)
+    {
+        self.title = title
+        self.context = context
+    }
+}
+
+struct TMMemoListRow: View
+{
+    var memoItem: TMMemoItem
+    
     var body: some View
     {
         VStack
         {
-            
+            VStack (alignment: .leading, spacing: 5.0)
+            {
+                HStack (spacing: 10)
+                {
+                    Image(systemName: "person")
+                        .aspectRatio(contentMode: .fit)
+                    Text(memoItem.title.capitalized)
+                        .font(.title)
+                        .fontWeight(.medium)
+                    Spacer()
+                }
+                .frame(minHeight: 30)
+                
+                Text(memoItem.id)
+                    .font(.caption2)
+                    .foregroundColor(Color(uiColor: .lightGray))
+                
+                if let previewContext: String = memoItem.context
+                {
+                    Text(previewContext)
+                        .font(.body)
+                        .frame(height: 15.0)
+                }
+            }
+            .padding(EdgeInsets(top: 7, leading: 15, bottom: 12, trailing: 15))
         }
-        .padding()
+        .background(.black)
+        .listRowBackground(Color.clear)
+        .foregroundColor(.white)
+        .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.gray, lineWidth: 3)
+        )
+    }
+}
+
+struct TMMemoListView: View
+{
+    private var memoItems: [TMMemoItem]
+    
+    init()
+    {
+        self.memoItems = [
+            TMMemoItem(),
+            TMMemoItem(context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
+            TMMemoItem(title: "timothy", context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+        ]
+    }
+    
+    var body: some View
+    {
+        List(self.memoItems)
+        { memoItem in
+            TMMemoListRow(memoItem: memoItem)
+                .listRowSeparator(.hidden)
+                .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+        }
+        .listStyle(.plain)
+        .background(.clear)
+        .cornerRadius(10)
+    }
+}
+
+struct TMTitleView: View
+{
+    var body: some View
+    {
+        VStack (alignment: .leading)
+        {
+            Text("Title")
+                
+        }
+    }
+}
+
+struct ContentView: View
+{
+    var body: some View
+    {
+        GeometryReader
+        { geometry in
+            ScrollView
+            {
+                TMTitleView()
+                    .background(.brown)
+                
+                TMMemoListView()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .background(.purple)
+            }
+            .background(.blue)
+        }
     }
 }
 
