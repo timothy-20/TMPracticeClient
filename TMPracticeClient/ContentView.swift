@@ -122,7 +122,7 @@ struct TMMemoListRow: View
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.gray, lineWidth: 3)
+                .stroke(.white, lineWidth: 2)
         )
     }
 }
@@ -135,6 +135,8 @@ struct TMMemoListView: View
     {
         self.memoItems = [
             TMMemoItem(),
+            TMMemoItem(),
+            TMMemoItem(),
             TMMemoItem(context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
             TMMemoItem(title: "timothy", context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
         ]
@@ -142,15 +144,22 @@ struct TMMemoListView: View
     
     var body: some View
     {
-        List(self.memoItems)
-        { memoItem in
-            TMMemoListRow(memoItem: memoItem)
-                .listRowSeparator(.hidden)
-                .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+        VStack
+        {
+            List(self.memoItems)
+            { memoItem in
+                TMMemoListRow(memoItem: memoItem)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+            }
+            .listStyle(.plain)
+            .background(.black)
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.white, lineWidth: 2)
+            )
         }
-        .listStyle(.plain)
-        .background(.clear)
-        .cornerRadius(10)
     }
 }
 
@@ -158,10 +167,26 @@ struct TMTitleView: View
 {
     var body: some View
     {
-        VStack (alignment: .leading)
+        VStack (spacing: 5)
         {
-            Text("Title")
-                
+            HStack (alignment: .center)
+            {
+                Image(systemName: "square.and.pencil")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 22)
+                    .foregroundColor(.white)
+                    
+                Text("Memo")
+                    .font(.system(size: 22, weight: .medium, design: .rounded))
+                    .foregroundColor(.white)
+                    
+                Spacer()
+            }
+            
+            Divider()
+                .frame(height: 1.5)
+                .background(.white)
         }
     }
 }
@@ -170,19 +195,37 @@ struct ContentView: View
 {
     var body: some View
     {
-        GeometryReader
-        { geometry in
+        VStack
+        {
             ScrollView
             {
-                TMTitleView()
-                    .background(.brown)
-                
-                TMMemoListView()
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .background(.purple)
+                VStack (spacing: 5)
+                {
+                    TMTitleView()
+                    TMMemoListView()
+                        .frame(height: 300)
+                        .padding(.all, 5)
+                }
             }
-            .background(.blue)
+            .padding()
         }
+        .background(.black)
+        .padding()
+        
+//        GeometryReader
+//        { geometry in
+//            ScrollView
+//            {
+//                TMTitleView()
+//                    .background(.brown)
+//
+//                TMMemoListView()
+//                    .frame(height: geometry.size.height - 50)
+//                    .background(.purple)
+//            }
+//            .background(.blue)
+//            .scrollDisabled(true)
+//        }
     }
 }
 
