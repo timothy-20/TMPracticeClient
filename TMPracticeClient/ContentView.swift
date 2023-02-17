@@ -183,21 +183,17 @@ struct TMMemoListView: View
     {
         List(self.memoItems)
         { memoItem in
-            Section
-            {
-                TMMemoListRow(memoItem: memoItem)
-                
-            } header:
-            {
-                Text("header")
-            }
+            TMMemoListRow(memoItem: memoItem)
         }
-        .listStyle(InsetGroupedListStyle())
-        .onAppear
-        {
-            UITableView.appearance().contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        }
+        .listStyle(.plain)
         
+//        .onAppear
+//        {
+//            UITableView.appearance().contentInset.top = 10
+//        }
+//        .background(.gray)
+        
+        // ---
 //        .background(.gray)
 //        .background(.gray)
 //        .overlay (alignment: .top)
