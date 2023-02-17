@@ -82,30 +82,61 @@ struct TMMemoItem: Identifiable
     }
 }
 
+struct TMLabelStyle: LabelStyle
+{
+    public var spacing: CGFloat
+    public var maxHeight: CGFloat?
+    
+    init(spacing: CGFloat, maxHeight: CGFloat? = 25) {
+        self.spacing = spacing
+        self.maxHeight = maxHeight
+    }
+    
+    func makeBody(configuration: Configuration) -> some View
+    {
+        HStack (spacing: self.spacing)
+        {
+            configuration.icon
+                .frame(maxHeight: self.maxHeight)
+            
+            configuration.title
+                .font(.title)
+                .fontWeight(.medium)
+        }
+    }
+}
+
 struct TMMemoListRow: View
 {
-    var memoItem: TMMemoItem
+    public var memoItem: TMMemoItem
     
     var body: some View
     {
-        VStack
+        ZStack
         {
-            VStack (alignment: .leading, spacing: 5.0)
+//            LinearGradient(gradient: Gradient(colors: [.black, .blue]), startPoint: .top, endPoint: .bottomTrailing)
+            
+            VStack (alignment: .leading, spacing: 5)
             {
-                HStack (spacing: 10)
+                Label
                 {
-                    Image(systemName: "person")
-                        .aspectRatio(contentMode: .fit)
                     Text(memoItem.title.capitalized)
-                        .font(.title)
-                        .fontWeight(.medium)
+                        .font(.system(size: 24))
+                    
                     Spacer()
+                    
+                } icon:
+                {
+                    Image(systemName: "pencil.line")
+                        .resizable()
+                        .scaledToFit()
+                        
                 }
                 .frame(minHeight: 30)
-                
+                .labelStyle(TMLabelStyle(spacing: 10, maxHeight: 20))
+
                 Text(memoItem.id)
                     .font(.caption2)
-                    .foregroundColor(Color(uiColor: .lightGray))
                 
                 if let previewContext: String = memoItem.context
                 {
@@ -114,16 +145,22 @@ struct TMMemoListRow: View
                         .frame(height: 15.0)
                 }
             }
-            .padding(EdgeInsets(top: 7, leading: 15, bottom: 12, trailing: 15))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(EdgeInsets(top: 7, leading: 15, bottom: 12, trailing: 10))
+            .foregroundColor(.black)
         }
-        .background(.black)
         .listRowBackground(Color.clear)
-        .foregroundColor(.white)
-        .cornerRadius(10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(.white, lineWidth: 2)
-        )
+        .listRowSeparator(.hidden)
+        .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 5, trailing: 10))
+        .cornerRadius(7)
+        .overlay
+        {
+            RoundedRectangle(cornerRadius: 7)
+                .stroke(
+                    AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center, angle: .degrees(90)),
+                    lineWidth: 2
+                )
+        }
     }
 }
 
@@ -144,22 +181,37 @@ struct TMMemoListView: View
     
     var body: some View
     {
-        VStack
-        {
-            List(self.memoItems)
-            { memoItem in
+        List(self.memoItems)
+        { memoItem in
+            Section
+            {
                 TMMemoListRow(memoItem: memoItem)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                
+            } header:
+            {
+                Text("header")
             }
-            .listStyle(.plain)
-            .background(.black)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(.white, lineWidth: 2)
-            )
         }
+        .listStyle(InsetGroupedListStyle())
+        .onAppear
+        {
+            UITableView.appearance().contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        }
+        
+//        .background(.gray)
+//        .background(.gray)
+//        .overlay (alignment: .top)
+//        {
+//            Rectangle()
+//                .frame(width: nil, height: 3)
+//                .cornerRadius(1.5)
+//        }
+//        .overlay (alignment: .bottom)
+//        {
+//            Rectangle()
+//                .frame(width: nil, height: 3)
+//                .cornerRadius(1.5)
+//        }
     }
 }
 
@@ -167,27 +219,43 @@ struct TMTitleView: View
 {
     var body: some View
     {
-        VStack (spacing: 5)
+        HStack (alignment: .center)
         {
-            HStack (alignment: .center)
+            VStack (alignment: .leading)
             {
-                Image(systemName: "square.and.pencil")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 22)
-                    .foregroundColor(.white)
-                    
-                Text("Memo")
-                    .font(.system(size: 22, weight: .medium, design: .rounded))
-                    .foregroundColor(.white)
-                    
-                Spacer()
+                Text("Primary")
+                    .font(.title)
+                    .foregroundStyle(.primary)
+                
+                Text("secondary")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
             
-            Divider()
-                .frame(height: 1.5)
-                .background(.white)
+            Spacer()
         }
+        
+//        VStack (spacing: 5)
+//        {
+//            HStack (alignment: .center)
+//            {
+//                Image(systemName: "square.and.pencil")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 22)
+//                    .foregroundColor(.white)
+//
+//                Text("Memo")
+//                    .font(.system(size: 22, weight: .medium, design: .rounded))
+//                    .foregroundColor(.white)
+//
+//                Spacer()
+//            }
+//
+//            Divider()
+//                .frame(height: 1.5)
+//                .background(.white)
+//        }
     }
 }
 
@@ -204,28 +272,12 @@ struct ContentView: View
                     TMTitleView()
                     TMMemoListView()
                         .frame(height: 300)
-                        .padding(.all, 5)
+                        .padding(EdgeInsets(top: 10, leading: 3, bottom: 0, trailing: 3))
                 }
             }
             .padding()
         }
-        .background(.black)
         .padding()
-        
-//        GeometryReader
-//        { geometry in
-//            ScrollView
-//            {
-//                TMTitleView()
-//                    .background(.brown)
-//
-//                TMMemoListView()
-//                    .frame(height: geometry.size.height - 50)
-//                    .background(.purple)
-//            }
-//            .background(.blue)
-//            .scrollDisabled(true)
-//        }
     }
 }
 
