@@ -18,6 +18,9 @@
 		99DA5FD529A357F100DC0E1B /* TMMemoListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA5FD429A357F100DC0E1B /* TMMemoListScrollView.swift */; };
 		99DA5FD729A35A7C00DC0E1B /* TMMemoListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA5FD629A35A7C00DC0E1B /* TMMemoListHeaderView.swift */; };
 		99DA5FD929A360F900DC0E1B /* TMCreateMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA5FD829A360F900DC0E1B /* TMCreateMemoView.swift */; };
+		99DA602929A5048300DC0E1B /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 99DA602829A5048300DC0E1B /* Model */; };
+		99DA602B29A5051A00DC0E1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA602A29A5051A00DC0E1B /* AppDelegate.swift */; };
+		99DA602D29A5052900DC0E1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA602C29A5052900DC0E1B /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,9 @@
 		99DA5FD429A357F100DC0E1B /* TMMemoListScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMMemoListScrollView.swift; sourceTree = "<group>"; };
 		99DA5FD629A35A7C00DC0E1B /* TMMemoListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMMemoListHeaderView.swift; sourceTree = "<group>"; };
 		99DA5FD829A360F900DC0E1B /* TMCreateMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMCreateMemoView.swift; sourceTree = "<group>"; };
+		99DA602829A5048300DC0E1B /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
+		99DA602A29A5051A00DC0E1B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		99DA602C29A5052900DC0E1B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,11 +108,14 @@
 		99A3B87F299B9F7800AE76A8 /* TMPracticeClient */ = {
 			isa = PBXGroup;
 			children = (
-				99A3B8AB299BA08B00AE76A8 /* modules */,
-				99A3B8AA299BA06900AE76A8 /* ui */,
+				99A3B8AB299BA08B00AE76A8 /* Modules */,
+				99A3B8AA299BA06900AE76A8 /* UI */,
 				99A3B880299B9F7800AE76A8 /* TMPracticeClientApp.swift */,
 				99A3B882299B9F7800AE76A8 /* ContentView.swift */,
+				99DA602A29A5051A00DC0E1B /* AppDelegate.swift */,
+				99DA602C29A5052900DC0E1B /* SceneDelegate.swift */,
 				99A3B884299B9F7B00AE76A8 /* Assets.xcassets */,
+				99DA602829A5048300DC0E1B /* Model */,
 				99A3B886299B9F7B00AE76A8 /* Preview Content */,
 			);
 			path = TMPracticeClient;
@@ -137,30 +146,30 @@
 			path = TMPracticeClientUITests;
 			sourceTree = "<group>";
 		};
-		99A3B8AA299BA06900AE76A8 /* ui */ = {
+		99A3B8AA299BA06900AE76A8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				99DA5FD129A3560800DC0E1B /* components */,
+				99DA5FD129A3560800DC0E1B /* Components */,
 				99DA5FD429A357F100DC0E1B /* TMMemoListScrollView.swift */,
 				99DA5FD829A360F900DC0E1B /* TMCreateMemoView.swift */,
 			);
-			path = ui;
+			path = UI;
 			sourceTree = "<group>";
 		};
-		99A3B8AB299BA08B00AE76A8 /* modules */ = {
+		99A3B8AB299BA08B00AE76A8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = modules;
+			path = Modules;
 			sourceTree = "<group>";
 		};
-		99DA5FD129A3560800DC0E1B /* components */ = {
+		99DA5FD129A3560800DC0E1B /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				99DA5FD229A3562300DC0E1B /* TMMemoListRow.swift */,
 				99DA5FD629A35A7C00DC0E1B /* TMMemoListHeaderView.swift */,
 			);
-			path = components;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99DA602929A5048300DC0E1B /* Model in Resources */,
 				99A3B888299B9F7B00AE76A8 /* Preview Assets.xcassets in Resources */,
 				99A3B885299B9F7B00AE76A8 /* Assets.xcassets in Resources */,
 			);
@@ -297,8 +307,10 @@
 				99DA5FD929A360F900DC0E1B /* TMCreateMemoView.swift in Sources */,
 				99DA5FD329A3562300DC0E1B /* TMMemoListRow.swift in Sources */,
 				99DA5FD729A35A7C00DC0E1B /* TMMemoListHeaderView.swift in Sources */,
+				99DA602B29A5051A00DC0E1B /* AppDelegate.swift in Sources */,
 				99DA5FD529A357F100DC0E1B /* TMMemoListScrollView.swift in Sources */,
 				99A3B881299B9F7800AE76A8 /* TMPracticeClientApp.swift in Sources */,
+				99DA602D29A5052900DC0E1B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

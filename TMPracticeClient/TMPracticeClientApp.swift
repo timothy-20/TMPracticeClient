@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct TMPracticeClientApp: App {
+    @UIApplicationDelegateAdaptor var delegate: AppDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
