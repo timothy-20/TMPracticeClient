@@ -14,6 +14,10 @@
 		99A3B892299B9F7C00AE76A8 /* TMPracticeClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3B891299B9F7C00AE76A8 /* TMPracticeClientTests.swift */; };
 		99A3B89C299B9F7C00AE76A8 /* TMPracticeClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3B89B299B9F7C00AE76A8 /* TMPracticeClientUITests.swift */; };
 		99A3B89E299B9F7C00AE76A8 /* TMPracticeClientUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3B89D299B9F7C00AE76A8 /* TMPracticeClientUITestsLaunchTests.swift */; };
+		99DA5FD329A3562300DC0E1B /* TMMemoListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA5FD229A3562300DC0E1B /* TMMemoListRow.swift */; };
+		99DA5FD529A357F100DC0E1B /* TMMemoListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA5FD429A357F100DC0E1B /* TMMemoListScrollView.swift */; };
+		99DA5FD729A35A7C00DC0E1B /* TMMemoListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA5FD629A35A7C00DC0E1B /* TMMemoListHeaderView.swift */; };
+		99DA5FD929A360F900DC0E1B /* TMCreateMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA5FD829A360F900DC0E1B /* TMCreateMemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		99A3B897299B9F7C00AE76A8 /* TMPracticeClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMPracticeClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A3B89B299B9F7C00AE76A8 /* TMPracticeClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPracticeClientUITests.swift; sourceTree = "<group>"; };
 		99A3B89D299B9F7C00AE76A8 /* TMPracticeClientUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPracticeClientUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		99DA5FD229A3562300DC0E1B /* TMMemoListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMMemoListRow.swift; sourceTree = "<group>"; };
+		99DA5FD429A357F100DC0E1B /* TMMemoListScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMMemoListScrollView.swift; sourceTree = "<group>"; };
+		99DA5FD629A35A7C00DC0E1B /* TMMemoListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMMemoListHeaderView.swift; sourceTree = "<group>"; };
+		99DA5FD829A360F900DC0E1B /* TMCreateMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMCreateMemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,9 @@
 		99A3B8AA299BA06900AE76A8 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				99DA5FD129A3560800DC0E1B /* components */,
+				99DA5FD429A357F100DC0E1B /* TMMemoListScrollView.swift */,
+				99DA5FD829A360F900DC0E1B /* TMCreateMemoView.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -141,6 +152,15 @@
 			children = (
 			);
 			path = modules;
+			sourceTree = "<group>";
+		};
+		99DA5FD129A3560800DC0E1B /* components */ = {
+			isa = PBXGroup;
+			children = (
+				99DA5FD229A3562300DC0E1B /* TMMemoListRow.swift */,
+				99DA5FD629A35A7C00DC0E1B /* TMMemoListHeaderView.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +294,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				99A3B883299B9F7800AE76A8 /* ContentView.swift in Sources */,
+				99DA5FD929A360F900DC0E1B /* TMCreateMemoView.swift in Sources */,
+				99DA5FD329A3562300DC0E1B /* TMMemoListRow.swift in Sources */,
+				99DA5FD729A35A7C00DC0E1B /* TMMemoListHeaderView.swift in Sources */,
+				99DA5FD529A357F100DC0E1B /* TMMemoListScrollView.swift in Sources */,
 				99A3B881299B9F7800AE76A8 /* TMPracticeClientApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
